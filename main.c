@@ -12,11 +12,11 @@ Date: 2024-02-08
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include "operations.h"
 
 /*===================================================*/
 /*global variables*/
 
-int op1, op2;
 
 /*===================================================*/
 /*auxiliare functions*/
@@ -42,82 +42,8 @@ int menu (void){
 	printf("09. GTE \t - Greater than or equal\n");
 	printf("10. LTE \t - Lower than or equal\n");
 	printf("11. E   \t - Equals\n");
-	printf("12. Exit\n");
+	printf("\n12. Exit\n");
 	printf("================================\n\n");
-}
-
-int not (void){
-	printf("================================\n\n");
-	printf("NOT operation\n\n");
-	printf("What is the value of op1:");
-	scanf(" %d", &op1);
-
-	printf("\n%d ───│>o─── %d\n", (bool)op1, !op1);
-}
-
-int and (void){
-	printf("================================\n\n");
-	printf("AND operation\n\n");
-	printf("What is the value of op1:");
-	scanf(" %d", &op1);
-	printf("What is the value of op2:");
-	scanf(" %d", &op2);
-
-	printf("\n%d ───|&&", (bool)op1);
-	printf("\n     |&&─── %d",((bool)op1 && (bool)op2));
-	printf("\n%d ───|&&\n", (bool)op2);
-}
-
-int or (void){
-	printf("================================\n\n");
-	printf("OR operation\n\n");
-	printf("What is the value of op1:");
-	scanf(" %d", &op1);
-	printf("What is the value of op2:");
-	scanf(" %d", &op2);
-
-	printf("\n%d ───|OR", (bool)op1);
-	printf("\n     |OR─── %d",((bool)op1 || (bool)op2));
-	printf("\n%d ───|OR\n", (bool)op2);
-}
-
-int nand (void){
-	printf("================================\n\n");
-	printf("NAND operation\n\n");
-	printf("What is the value of op1:");
-	scanf(" %d", &op1);
-	printf("What is the value of op2:");
-	scanf(" %d", &op2);
-
-	printf("\n%d ───|AND", (bool)op1);
-	printf("\n     |ANDo─── %d",!((bool)op1 && (bool)op2));
-	printf("\n%d ───|AND\n", (bool)op2);
-}
-
-int nor (void){
-	printf("================================\n\n");
-	printf("NOR operation\n\n");
-	printf("What is the value of op1:");
-	scanf(" %d", &op1);
-	printf("What is the value of op2:");
-	scanf(" %d", &op2);
-
-	printf("\n%d ───|OR", (bool)op1);
-	printf("\n     |ORo─── %d", ((bool)op1 || (bool)op2));
-	printf("\n%d ───|OR\n", (bool)op2);
-}
-
-int xor (void){
-	printf("================================\n\n");
-	printf("XOR operation\n\n");
-	printf("What is the value of op1:");
-	scanf(" %d", &op1);
-	printf("What is the value of op2:");
-	scanf(" %d", &op2);
-
-	printf("\n%d ───|-|OR", (bool)op1);
-	printf("\n     | |OR─── %d",((bool)op1 ^ (bool)op2));
-	printf("\n%d ───|-|OR\n", (bool)op2);
 }
 
 /*===================================================*/
@@ -126,7 +52,7 @@ int xor (void){
 int main (){
 	
 	int i = 0;
-	char ch[100];
+	char ch[10];
 
 	while(i != 12){
 		
@@ -145,12 +71,12 @@ int main (){
 			case 3: or(); break;
 			case 4: nand(); break;
 			case 5: nor(); break;
-			case 6: xor(); break;
-			case 7: printf("07.GT - Greater than\n"); break;
-			case 8: printf("08.LT - Lower than\n"); break;
-			case 9: printf("09.GTE - Greater than or equal\n"); break;
-			case 10: printf("10.LTE - Lower than or equal\n"); break;
-			case 11: printf("11.E - Equals\n"); break;
+			case 6: exor(); break;
+			case 7: gt(); break;
+			case 8: lt(); break;
+			case 9: gte(); break;
+			case 10: lte(); break;
+			case 11: equals(); break;
 			case 12: printf("Exiting ...\n\n"); system("sleep 0.5"); return 0;
 			default: printf("Invalid value\n"); break;
 		}
@@ -158,8 +84,8 @@ int main (){
 		printf("\nPress enter to continue ...");
 		
 		do{
-			fgets(ch, 100, stdin);
-		} while ((bool)(fgets(ch, 100, stdin)) != 1);
+			fgets(ch, 10, stdin);
+		} while ((bool)(fgets(ch, 10, stdin)) != 1);
 	}
 } /*end of main*/
 /*===================================================*/
